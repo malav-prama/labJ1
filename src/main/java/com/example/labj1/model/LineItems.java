@@ -4,18 +4,9 @@ import java.util.List;
 
 public class LineItems {
 
-    private Integer id;
     private Integer quantity;
     private List <ProductInfo> lineItems;
     private Integer lineItemTotal;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getQuantity() {
         return quantity;
