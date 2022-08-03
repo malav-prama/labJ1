@@ -8,6 +8,14 @@ public class LineItems {
     private List <ProductInfo> lineItems;
     private Integer lineItemTotal;
 
+    public List<ProductInfo> getLineItems() {
+        return lineItems;
+    }
+
+    public void setLineItems(List<ProductInfo> lineItems) {
+        this.lineItems = lineItems;
+    }
+
     public Integer getQuantity() {
         return quantity;
     }
