@@ -2,6 +2,7 @@ package com.example.labj1.model;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.annotation.Id;
 
+import java.util.List;
 
 
 @Document(collection="order")
@@ -12,8 +13,25 @@ public class Order {
     private String totalCosts;
     private String orderDate;
 
-   // private UserInfo userInfo;
+    private UserInfo userInfo;
 
+    private List<LineItems> lineItems;
+
+    public List<LineItems> getLineItems() {
+        return lineItems;
+    }
+
+    public void setLineItems(List<LineItems> lineItems) {
+        this.lineItems = lineItems;
+    }
+
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
+    }
 
     public String getId() {
         return id;
