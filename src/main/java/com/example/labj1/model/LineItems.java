@@ -5,11 +5,23 @@ import java.util.List;
 public class LineItems {
 
     private Integer quantity;
-    private List <ProductInfo> lineItems;
+    private ProductInfo productInfo;
     private Integer lineItemTotal;
 
+<<<<<<< Updated upstream
     public List<ProductInfo> getLineItems() {
         return lineItems;
+=======
+    public LineItems(Integer id, Integer quantity, ProductInfo productInfo, Integer lineItemTotal) {
+        this.id = id;
+        this.quantity = quantity;
+        this.productInfo = productInfo;
+        this.lineItemTotal = lineItemTotal;
+    }
+
+    public Integer getId() {
+        return id;
+>>>>>>> Stashed changes
     }
 
     public void setLineItems(List<ProductInfo> lineItems) {
@@ -22,6 +34,14 @@ public class LineItems {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public ProductInfo getProductInfo() {
+        return productInfo;
+    }
+
+    public void setProductInfo(ProductInfo productInfo) {
+        this.productInfo = productInfo;
     }
 
     public Integer getLineItemTotal() {

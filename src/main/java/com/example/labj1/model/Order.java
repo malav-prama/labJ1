@@ -17,6 +17,20 @@ public class Order {
 
     private List<LineItems> lineItems;
 
+<<<<<<< Updated upstream
+=======
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id='" + id + '\'' +
+                ", totalCosts='" + totalCosts + '\'' +
+                ", orderDate='" + orderDate + '\'' +
+                ", userInfo=" + userInfo +
+                ", lineItems=" + lineItems +
+                '}';
+    }
+
+>>>>>>> Stashed changes
     public List<LineItems> getLineItems() {
         return lineItems;
     }
