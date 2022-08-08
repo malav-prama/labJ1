@@ -4,14 +4,11 @@ import java.util.List;
 
 public class LineItems {
 
+    private Integer id;
     private Integer quantity;
     private ProductInfo productInfo;
     private Integer lineItemTotal;
 
-<<<<<<< Updated upstream
-    public List<ProductInfo> getLineItems() {
-        return lineItems;
-=======
     public LineItems(Integer id, Integer quantity, ProductInfo productInfo, Integer lineItemTotal) {
         this.id = id;
         this.quantity = quantity;
@@ -21,11 +18,10 @@ public class LineItems {
 
     public Integer getId() {
         return id;
->>>>>>> Stashed changes
     }
 
-    public void setLineItems(List<ProductInfo> lineItems) {
-        this.lineItems = lineItems;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getQuantity() {

@@ -17,8 +17,6 @@ public class Order {
 
     private List<LineItems> lineItems;
 
-<<<<<<< Updated upstream
-=======
     @Override
     public String toString() {
         return "Order{" +
@@ -30,7 +28,6 @@ public class Order {
                 '}';
     }
 
->>>>>>> Stashed changes
     public List<LineItems> getLineItems() {
         return lineItems;
     }

@@ -33,8 +33,8 @@ public class OrderLogic {
 
         UriComponentsBuilder url = UriComponentsBuilder.fromUriString(inventoryUrl)
 
-                //.queryParam("productId", Integer.parseInt(order.getLineItems().get(0).getProductInfo().getId()));
-                .queryParam("productId", 24234);
+               .queryParam("productId", (order.getLineItems().get(0).getProductInfo().getId()));
+               // .queryParam("productId", 24234);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
