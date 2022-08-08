@@ -33,8 +33,8 @@ public class OrderLogic {
 
         UriComponentsBuilder url = UriComponentsBuilder.fromUriString(inventoryUrl)
 
-               .queryParam("productId", (order.getLineItems().get(0).getProductInfo().getId()));
-               // .queryParam("productId", 24234);
+                .queryParam("productId", (order.getLineItems().get(0).getProductInfo().getId()));
+        // .queryParam("productId", 24234);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
@@ -42,10 +42,11 @@ public class OrderLogic {
         HttpEntity<String> entity = new HttpEntity<>(headers);
         Inventory inventory = restTemplate.exchange(url.build().toUri().toString(), HttpMethod.GET, entity, Inventory.class).getBody();
         System.out.println("inventory data :: " + inventory.getTotalQuantity());
-        if (order.getLineItems().get(0).getId() == inventory.getProductId() && order.getLineItems().get(0).getQuantity() <= inventory.getTotalQuantity()) {
+        if (order.getLineItems().get(0).getProductInfo().getId() == inventory.getProductId() && order.getLineItems().get(0).getQuantity() <= inventory.getTotalQuantity()) {
             System.out.print("true");
 
             //orderDao.saveOrder(order);
+
         }
     }
 }
