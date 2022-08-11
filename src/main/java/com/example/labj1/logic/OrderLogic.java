@@ -20,7 +20,6 @@ public class OrderLogic {
 
     @Autowired
     OrderDao orderDao;
-    updateInventory updateInventory;
     @Autowired
     RestTemplate restTemplate;
 
@@ -34,14 +33,16 @@ public class OrderLogic {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
 
-        HttpEntity<String> entity = new HttpEntity<>(headers);
+        HttpEntity<Void> entity = new HttpEntity<>(headers);
         Inventory inventory = restTemplate.exchange(url.build().toUri().toString(), HttpMethod.GET, entity, Inventory.class).getBody();
         System.out.println("inventory data :: " + inventory.getTotalQuantity());
         if (order.getLineItems().get(0).getProductInfo().getId() == inventory.getProductId() && order.getLineItems().get(0).getQuantity() <= inventory.getTotalQuantity()) {
 
             orderDao.saveOrder(order);
-            int tempId=order.getLineItems().get(0).getId();
+            int tempId=order.getLineItems().get(0).getProductInfo().getId();
             int tempQty=order.getLineItems().get(0).getQuantity();
+
+            updateInventory updateInventory=new updateInventory();
 
             updateInventory.setProductId(tempId);
             updateInventory.setProductQt(tempQty);
@@ -49,9 +50,8 @@ public class OrderLogic {
             String putUrl="http://localhost:8081/inventory/v2/updateInventory";
             UriComponentsBuilder url2= UriComponentsBuilder.fromUriString(putUrl).queryParam("productId", (order.getLineItems().get(0).getProductInfo().getId()));
             HttpHeaders headersPut = new HttpHeaders();
-            headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-            HttpEntity<String> entityPut = new HttpEntity<>(headers);
-            restTemplate.exchange(url.build().toUri().toString(), HttpMethod.PUT, entity, updateInventory.class);
+            HttpEntity<updateInventory > entityPut = new HttpEntity<>(updateInventory);
+            restTemplate.exchange(url2.build().toUri().toString(), HttpMethod.PUT, entityPut, updateInventory.class);
             return ResponseEntity.status(200).build();
 
         }
